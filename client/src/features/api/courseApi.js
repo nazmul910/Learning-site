@@ -49,7 +49,14 @@ export const courseApi = createApi({
         headers: { "Content-Type": "application/json" }
       }),
       invalidatesTags: ["Refetch_Creator_Course"]
-    })
+    }),
+    getCourseLecture : builder.query({
+      query:({courseId}) =>({
+        url:`/${courseId}/lecture`,
+        method:"GET",
+      }),
+      // invalidatesTags: ["Refetch_Creator_Course"]
+    }),
   })
 })
 
@@ -58,5 +65,6 @@ export const {
   useGetCreatorCourseQuery,
   useEditCourseMutation,
   useGetCourseByIdQuery,
-  useCreateLectureMutation
+  useCreateLectureMutation,
+  useGetCourseLectureQuery,
 } = courseApi;
